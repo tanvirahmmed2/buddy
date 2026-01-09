@@ -32,7 +32,7 @@ export async function POST(req) {
                 success: false, message: 'Incorrect password'
             }, { status: 400 })
         }
-        const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: "2d" })
+        const token = jwt.sign({ id: user._id, email: user.email, role:user.role }, JWT_SECRET, { expiresIn: "2d" })
         const response = NextResponse.json(
             {
                 success: true,
