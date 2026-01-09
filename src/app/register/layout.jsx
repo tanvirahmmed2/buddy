@@ -1,3 +1,4 @@
+import { isLogin } from '@/lib/middleware/authentication'
 import React from 'react'
 
 export const metadata={
@@ -5,7 +6,11 @@ export const metadata={
     description:'Register page'
 }
 
-const RegisterLayout = ({children}) => {
+const RegisterLayout = async({children}) => {
+  const auth= await isLogin()
+    if(auth.success) {
+      return redirect('/chat')
+    }
   return (
     <div>
       {children}

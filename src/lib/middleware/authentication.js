@@ -20,6 +20,8 @@ export async function isLogin() {
     }
     
 }
+
+
 export async function isAdmin() {
     try {
         const token= (await cookies()).get('user_token')?.value
@@ -28,7 +30,7 @@ export async function isAdmin() {
         if(!decoded) return {success:false, message:'jwt authentication failed'}
         const user= await User.findById(decoded.id)
         if(!user) return {success:false, message:'User not found'}
-        if(!user.role==='admin') return {success:false, message: "You're not and admin"}
+        if(user.role!=='admin') return {success:false, message: "You're not and admin"}
         return {success:true, payload:user}
     } catch (error) {
         return {success:false, message:error.message}

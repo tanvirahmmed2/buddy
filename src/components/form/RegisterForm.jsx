@@ -20,7 +20,6 @@ const RegisterForm = () => {
     try {
       const response = await axios.post('/api/register', formData, { withCredentials: true })
       toast.success(response.data.message)
-      window.location.replace('/chat')
 
     } catch (error) {
       console.log(error)
@@ -42,7 +41,7 @@ const RegisterForm = () => {
         <label htmlFor="password" className='text-sm'>Password</label>
         <input type="password" value={formData.password} name='password' id='password' onChange={handleChange} className='w-full border outline-none px-2 p-1' required />
       </div>
-      <button type='submit' className='bg-blue-400 text-white p-1 w-full text-center '>Register</button>
+      <button type='submit' className='bg-blue-400 text-white p-1 w-full text-center cursor-pointer '>Register</button>
     </form>
   )
 }
