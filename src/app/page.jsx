@@ -1,9 +1,10 @@
-import Image from "next/image";
+
+import Intro from "@/components/page/Intro";
 
 export default function Home() {
   return (
     <div>
-      hello voters
+      <Intro/>
     </div>
   );
 }
