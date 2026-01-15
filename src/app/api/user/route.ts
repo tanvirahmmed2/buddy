@@ -43,3 +43,26 @@ export async function POST(req: Request) {
     }
 
 }
+
+
+export async function GET() {
+    try {
+        await connectDB()
+        const users= await User.find({}).sort({createdAt: -1})
+        if(!users || users.length<1){
+            return NextResponse.json({
+                success:false, message:'No user found'
+            },{status:400})
+        }
+
+        return NextResponse.json({
+            success:true, message:'Successfully fetched users data', payload:users
+        },{status:200})
+    } catch (error:any) {
+        return NextResponse.json({
+            success:false, message:error.message
+        },{status:500})
+        
+    }
+    
+}
