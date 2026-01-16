@@ -7,7 +7,7 @@ const Navbar = async () => {
   return (
     <div className='w-full relative'>
       <nav className='w-full h-12 bg-black  text-white flex flex-row items-center justify-around px-4'>
-        <Link href={'/'} className='text-2xl font-semibold'>Next</Link>
+        <Link href={'/'} className='text-2xl font-semibold'>Buddy</Link>
         <div className='w-auto flex flex-row items-center justify-center gap-1'>
           {
             auth.success ? <div className='w-auto flex flex-row items-center justify-center gap-1'>
