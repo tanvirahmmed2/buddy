@@ -6,22 +6,22 @@ import React, { createContext, useEffect, useState } from "react";
 export const Context = createContext()
 
 const ContextProvider = ({ children }: Readonly<{ children: React.ReactNode }>) => {
-    const [tasks, setTasks] = useState<ITask[]>([])
+    const [pendingTasks, setPendingTasks] = useState<ITask[]>([])
 
-    const fetchTask = async () => {
+    const fetchPendingTask = async () => {
         try {
             const response= await axios.get('/api/task', {withCredentials:true})
-            setTasks(response.data.payload)
+            setPendingTasks(response.data.payload)
         } catch (error:any) {
             console.log(error)
-            setTasks([])
+            setPendingTasks([])
         }
     }
 
-    useEffect(()=>{fetchTask()},[])
+    useEffect(()=>{fetchPendingTask()},[])
 
     const contextValues = {
-        tasks, fetchTask
+        pendingTasks, fetchPendingTask
     }
     return <Context.Provider value={contextValues}>
         {children}

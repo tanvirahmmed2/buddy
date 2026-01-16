@@ -21,6 +21,12 @@ export async function POST(req:Request) {
                 success:false, message:'Please fill all information'
             },{status:400})
         }
+
+        if(new Date(deadline).getTime() < Date.now()){
+            return NextResponse.json({
+                success:false, message:'Please enter a valid date'
+            }, {status:400})
+        }
         const slug= slugify(title)
 
       const newTask= new Task({

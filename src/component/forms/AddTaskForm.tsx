@@ -5,7 +5,7 @@ import { useContext, useState } from "react"
 import { Context } from "../context/Context"
 
 const AddTaskForm = () => {
-    const {fetchTask}= useContext(Context)
+    const {fetchPendingTask}= useContext(Context)
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -23,7 +23,7 @@ const AddTaskForm = () => {
         try {
             const response = await axios.post('/api/task', formData, { withCredentials: true })
             alert(response.data.message)
-            fetchTask()
+            fetchPendingTask()
         } catch (error: any) {
             console.log(error)
             alert(error?.response?.data?.message || "Failed to add task")
@@ -31,8 +31,8 @@ const AddTaskForm = () => {
         }
     }
     return (
-        <form onSubmit={submitTask}>
-            <div className="w-full flex flex-col items-center justify-center gap-1">
+        <form onSubmit={submitTask} className="w-full flex flex-col items-center justify-center gap-2 ">
+            <div className="w-full flex flex-col  gap-1">
                 <label htmlFor="title">Title</label>
                 <input type="text" required name="title" id="title" value={formData.title} onChange={changeHandler} className="w-full px-3 p-1 border outline-none" />
             </div>
@@ -57,7 +57,7 @@ const AddTaskForm = () => {
                 <label htmlFor="description">Description</label>
                 <textarea required name="description" id="description" value={formData.description} onChange={changeHandler} className="w-full px-3 p-1 border outline-none" />
             </div>
-            <button type="submit">Submit</button>
+            <button type="submit" className="bg-black p-1 px-4 rounded-lg text-white hover:bg-black/60 cursor-pointer">Submit</button>
         </form>
     )
 }

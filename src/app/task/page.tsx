@@ -1,29 +1,41 @@
 'use client'
 
+import CancelTask from "@/component/button/CancelTask"
+import CompleteTask from "@/component/button/CompleteTask"
+import DeleteTask from "@/component/button/DeleteTask"
 import { Context } from "@/component/context/Context"
 import AddTaskForm from "@/component/forms/AddTaskForm"
 import Link from "next/link"
 import { useContext } from "react"
 
 const TaskPage = () => {
-  const { tasks } = useContext(Context)
+  const { pendingTasks } = useContext(Context)
   return (
     <div className='w-full flex flex-col gap-4 min-h-screen p-4'>
 
       <AddTaskForm />
 
       {
-        tasks === null ? <div className="w-full h-auto flex items-center justify-center p-1">
+        pendingTasks === null ? <div className="w-full h-auto flex items-center justify-center p-1">
           <p>No Task Found</p>
         </div> :
-          <div>
+          <div className="w-full flex flex-col items-center justify-center gap-4">
+            <h1 className="text-2xl font-semibold text-center">Pending Tasks</h1>
             {
-              tasks.map((task: any) => (
-                <div key={task._id}>
-                  <Link href={`/task/${task._id}`}>{task.title}</Link>
-                  <div>
-                    <p>{task.status}</p>
-                    <p>Deadline :{task.deadline.slice(0, 10)}</p>
+              pendingTasks.map((task: any) => (
+                <div key={task._id} className="w-full flex flex-col md:flex-row items-center justify-center gap-2 p-2 border rounded-lg shadow">
+                  <div className="w-full flex flex-col ">
+                    <Link href={`/task/${task._id}`} className="text-xl font-semibold">{task.title}</Link>
+                    <div className="w-full flex flex-row gap-3">
+                      <p className="px-3 rounded-lg bg-yellow-400 text-white">{task.status}</p>
+                      <p>Deadline: {task.deadline.slice(0, 10)}</p>
+                    </div>
+                    <p>Details: {task.description}</p>
+                  </div>
+                  <div className="w-auto flex flex-row md:flex-col items-center justify-between">
+                    <DeleteTask id={task._id}/>
+                    <CompleteTask id={task._id}/>
+                    <CancelTask id={task._id}/>
                   </div>
                 </div>
               ))
