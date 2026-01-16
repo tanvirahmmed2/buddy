@@ -10,7 +10,7 @@ const ContextProvider = ({ children }: Readonly<{ children: React.ReactNode }>) 
 
     const fetchPendingTask = async () => {
         try {
-            const response= await axios.get('/api/task', {withCredentials:true})
+            const response= await axios.get('/api/task/pending', {withCredentials:true})
             setPendingTasks(response.data.payload)
         } catch (error:any) {
             console.log(error)

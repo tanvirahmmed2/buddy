@@ -16,7 +16,7 @@ export async function GET() {
             },{status:400})
         }
 
-        const tasks= await Task.find({createdBy: auth.payload._id, status:'pending'})
+        const tasks= await Task.find({createdBy: auth.payload._id, status:'pending'}).sort({createdAt:-1})
 
         if(!tasks || tasks.length<1){
             return NextResponse.json({
