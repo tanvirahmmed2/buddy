@@ -1,6 +1,9 @@
 
 import { Metadata } from "next";
 import "./globals.css";
+import ContextProvider from "@/component/context/Context";
+import Navbar from "@/component/bar/Navbar";
+import Footer from "@/component/bar/Footer";
 
 export const metadata:Metadata={
   title:'Your Buddy',
@@ -17,7 +20,11 @@ export default function RootLayout({
       <body
         className={` antialiased`}
       >
-        {children}
+        <ContextProvider>
+          <Navbar/>
+          {children}
+          <Footer/>
+        </ContextProvider>
       </body>
     </html>
   );

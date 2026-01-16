@@ -21,6 +21,7 @@ export async function GET() {
             expires: new Date(0),
             path: '/'
         })
+        return response
     } catch (error: any) {
         return NextResponse.json({
             success: false, message: error.message

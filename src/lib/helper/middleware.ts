@@ -3,8 +3,15 @@ import jwt from 'jsonwebtoken'
 import { JWT_SECRET } from "../database/secret"
 import User from "../models/user"
 
+interface AuthResponse {
+  success: boolean;
+  message: string;
+  payload?:any
+}
 
-export async function isLogin() {
+
+
+export async function isLogin(): Promise<AuthResponse> {
     try {
         const token = (await cookies()).get('user_token')?.value
         if(!token){
