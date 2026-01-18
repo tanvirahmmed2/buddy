@@ -3,7 +3,6 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import connectDB from "@/lib/database/db";
 import User from "@/lib/models/user";
-import { JWT_SECRET } from "@/lib/database/secret";
 
 
 export async function POST(req: Request) {
@@ -35,7 +34,7 @@ export async function POST(req: Request) {
             success: true, message: 'Login successfull'
         }, { status: 200 })
 
-        const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '7d' })
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, { expiresIn: '7d' })
 
         response.cookies.set({
             name: "user_token",

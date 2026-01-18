@@ -1,12 +1,11 @@
 'use client'
 import axios from "axios";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { Context } from "../context/Context";
-import { useContext } from "react";
+import {  useTaskContext } from "../context/Context";
 
 const DeleteTask = ({id}:{id:string}) => {
   
-    const {fetchPendingTask}=useContext(Context)
+    const {fetchPendingTask}=useTaskContext()
 
   const deleteTask=async()=>{
     try {

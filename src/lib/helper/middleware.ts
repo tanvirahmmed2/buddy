@@ -1,15 +1,16 @@
 import { cookies } from "next/headers"
-import jwt from 'jsonwebtoken'
-import { JWT_SECRET } from "../database/secret"
+import jwt, { JwtPayload } from 'jsonwebtoken'
 import User from "../models/user"
 
 interface AuthResponse {
   success: boolean;
   message: string;
-  payload?:any
+  payload?: any
 }
 
-
+interface DecodedToken extends JwtPayload {
+  id: string;
+}
 
 export async function isLogin(): Promise<AuthResponse> {
     try {
@@ -18,9 +19,9 @@ export async function isLogin(): Promise<AuthResponse> {
             return {success:false, message:'Please login'}
         }
 
-        const decoded= jwt.verify(token, JWT_SECRET)
+        const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as DecodedToken;
 
-        const user= await User.findById(decoded.id)
+        const user = await User.findById(decoded.id)
         if(!user){
             return {success:false, message:'User not found'}
         }
@@ -28,7 +29,5 @@ export async function isLogin(): Promise<AuthResponse> {
 
     } catch (error:any) {
         return {success:false, message:error.message}
-        
     }
-    
 }

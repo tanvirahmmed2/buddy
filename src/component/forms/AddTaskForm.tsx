@@ -1,11 +1,11 @@
 'use client'
 
 import axios from "axios"
-import { useContext, useState } from "react"
-import { Context } from "../context/Context"
+import { useState } from "react"
+import {  useTaskContext } from "../context/Context"
 
 const AddTaskForm = () => {
-    const {fetchPendingTask}= useContext(Context)
+    const {fetchPendingTask}= useTaskContext()
     const [formData, setFormData] = useState({
         title: '',
         description: '',

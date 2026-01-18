@@ -1,12 +1,12 @@
 import axios from 'axios';
-import React, { useContext } from 'react'
+import React from 'react'
 import { MdCancelPresentation } from "react-icons/md";
-import { Context } from '../context/Context';
+import {  useTaskContext } from '../context/Context';
 
 const CancelTask = ({id}:{id:string}) => {
 
     
-      const {fetchPendingTask}=useContext(Context)
+    const { fetchPendingTask } = useTaskContext();
     const cancelTask= async()=>{
         try {
             const response= await axios.put('/api/task/cancel', {id}, {withCredentials:true})
