@@ -19,7 +19,7 @@ const CancelTask = ({id}:{id:string}) => {
         }
     }
   return (
-    <button onClick={cancelTask}><MdCancelPresentation/></button>
+    <button onClick={cancelTask} className='cursor-pointer'><MdCancelPresentation/></button>
   )
 }
 

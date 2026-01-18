@@ -19,7 +19,7 @@ const DeleteTask = ({id}:{id:string}) => {
     }
   }
   return (
-    <button onClick={deleteTask}><RiDeleteBin6Line/></button>
+    <button onClick={deleteTask} className='cursor-pointer'><RiDeleteBin6Line/></button>
   )
 }
 

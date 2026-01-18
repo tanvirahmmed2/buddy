@@ -18,7 +18,7 @@ const CompleteTask = ({id}:{id:string}) => {
     }
   }
   return (
-    <button onClick={completeTask}><IoCheckmarkDoneCircleOutline/></button>
+    <button onClick={completeTask} className='cursor-pointer'><IoCheckmarkDoneCircleOutline/></button>
   )
 }
 
