@@ -40,7 +40,7 @@ const RegisterForm = () => {
                 <label htmlFor="password">Pasword</label>
                 <input type="password" required name='password' id='password' value={formData.password} onChange={changeHandler} className='w-full px-3 p-1 border outline-none rounded-lg' />
             </div>
-            <button type='submit' className='bg-sky-400 px-3 text-white rounded-lg cursor-pointer hover:bg-sky-500'>Register</button>
+            <button type='submit' className='bg-black px-3 text-white rounded-lg cursor-pointer hover:bg-black/70'>Register</button>
         </form>
     )
 }
