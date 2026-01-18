@@ -50,7 +50,7 @@ const AllTask = () => {
 
                             <div className="flex flex-wrap items-center gap-3 text-sm font-medium">
                                 {
-                                    task?.status==='pending'? <span className="text-red-400">Please complete in {task?.deadline.slice(0,10)}</span>: task?.status==='canceled'? <span className="text-red-600">Deadline over</span>: <span className="text-green-400">{task?.status}</span>
+                                    task?.status==='pending'? <span className="text-red-400">Please complete in {new Date(task.deadline).toISOString().slice(0, 10)}</span>: task?.status==='canceled'? <span className="text-red-600">Deadline over</span>: <span className="text-green-400">{task?.status}</span>
                                 }
                             </div>
 
@@ -63,7 +63,7 @@ const AllTask = () => {
                         </div>
 
                         <div className="flex flex-row md:flex-col items-center justify-center gap-3 pt-4 md:pt-0 md:pl-6 border-t md:border-t-0 md:border-l border-slate-100">
-                            <DeleteTask id={task._id} />
+                          {task?._id && <DeleteTask id={task._id.toString()} />}
                         </div>
 
                     </div>

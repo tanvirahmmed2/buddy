@@ -15,9 +15,9 @@ const Profile = async () => {
   return (
     <div className='w-full min-h-screen flex flex-col gap-4 p-2 items-center '>
       <div className='w-full flex flex-col items-center justify-center gap-1'>
-        <h1 className='text-2xl font-semibold'>Welcome {auth.payload.name}</h1>
+        <h1 className='text-2xl font-semibold'>Welcome {auth.payload?.name}</h1>
         <p className='italic'>Profile Information</p>
-        <p>Email: {auth.payload.email}</p>
+        <p>Email: {auth.payload?.email}</p>
       </div>
       <PendingTasks/>
       <AllTask/>

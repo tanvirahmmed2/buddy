@@ -57,9 +57,10 @@ const PendingTasks = () => {
               </div>
 
               <div className="flex flex-row md:flex-col items-center justify-center gap-3 pt-4 md:pt-0 md:pl-6 border-t md:border-t-0 md:border-l border-slate-100">
-                <DeleteTask id={task._id} />
-                <CompleteTask id={task._id} />
-                <CancelTask id={task._id} />
+                <DeleteTask id={task._id.toString()} />
+                <CompleteTask id={task._id.toString()} />
+                <CancelTask id={task._id.toString()} />
+                
               </div>
 
             </div>
