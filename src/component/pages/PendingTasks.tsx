@@ -11,14 +11,14 @@ const PendingTasks = () => {
 
   if (pendingTasks.length < 1) {
     return (
-      <div className='w-full p-10 text-center text-gray-500'>
+      <div className='w-full p-10 text-center bg-pink-200'>
         No pending tasks found.
       </div>
     );
   }
 
   return (
-    <div className='w-full p-2'>
+    <div className='w-full p-2 bg-pink-200'>
       <div className="w-full flex flex-col items-center justify-center gap-4">
         <h1 className="text-2xl font-semibold text-center">Pending Tasks</h1>
         {
